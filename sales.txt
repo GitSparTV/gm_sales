@@ -1,0 +1,11 @@
+"sandbox"
+{
+	"base"		"base"
+	"title"		"Sales"
+	"maps"		"^sales_"
+	"menusystem"	"1"
+
+	"settings"
+	{
+	}
+}
