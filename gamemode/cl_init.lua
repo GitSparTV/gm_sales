@@ -16,9 +16,10 @@ function GM:HUDPaintBackground()
 end
 
 function GM:PostDrawOpaqueRenderables()
-	if not CART then return end
-	render.DrawLine(CART:GetPos(),CART:GetPos() + CART:GetVelocity(),color_white)
-	render.DrawLine(CART:GetPos(),CART:GetPos() + CART:GetForward() * 50,Color(255,0,0))
+	local cart = LocalPlayer().Cart
+	if not IsValid(cart) then return end
+	render.DrawLine(cart:GetPos(),cart:GetPos() + cart:GetVelocity(),color_white)
+	render.DrawLine(cart:GetPos(),cart:GetPos() + cart:GetForward() * 50,Color(255,0,0))
 end
 
 -- function GM:Move() return true end

@@ -1,0 +1,10 @@
+@include "base.fgd"
+@include "halflife2.fgd"
+
+@PointClass base(Targetname) iconsprite("editor/info_target.vmt") = gm_sales_shelf_point : "GM Sales Shelf Point"
+[
+	nextshelf1(target_destination) : "Next Shelf 1" : "" : "Next shelf in the linked list"
+	nextshelf2(target_destination) : "Next Shelf 2" : "" : "Next shelf in the linked list"
+	nextshelf3(target_destination) : "Next Shelf 3" : "" : "Next shelf in the linked list"
+	nextshelf4(target_destination) : "Next Shelf 4" : "" : "Next shelf in the linked list"
+]

@@ -1,7 +1,7 @@
-"sandbox"
+"gm_sales"
 {
 	"base"		"base"
-	"title"		"Sales"
+	"title"		"GM Sales"
 	"maps"		"^sales_"
 	"menusystem"	"1"
 

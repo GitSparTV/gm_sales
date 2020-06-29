@@ -1,2 +1,2 @@
-gamemodes\sales\cl_init.lua
-gamemodes\sales\shared.lua
+gamemodes\gm_sales\gamemode\cl_init.lua
+gamemodes\gm_sales\gamemode\shared.lua
