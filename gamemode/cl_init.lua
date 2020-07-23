@@ -10,20 +10,32 @@ function GM:Think()
 end
 
 function GM:HUDPaint()
+	surface.SetDrawColor(255,0,0)
+	surface.DrawRect(ScrW()/2 - 1, ScrH()/2 - 1, 1,1)
 end
 
 function GM:HUDPaintBackground()
 end
 
+local cf = Vector()
 function GM:PostDrawOpaqueRenderables()
+	-- local tr = LocalPlayer():GetEyeTrace()
+	
+	-- render.SetColorMaterial()
+	-- render.DrawBox(tr.HitPos,tr.Entity:GetAngles(), -Vector(16,16,0), Vector(16,16,32), Color(255,255,0, 100))
+	-- render.DrawBox(tr.HitPos,tr.Entity:GetAngles(), Vector(16,16,32), -Vector(16,16,0), Color(0,255,0, 100))
+
 	local cart = LocalPlayer().Cart
 	if not IsValid(cart) then return end
-	render.DrawLine(cart:GetPos(),cart:GetPos() + cart:GetVelocity(),color_white)
-	render.DrawLine(cart:GetPos(),cart:GetPos() + cart:GetForward() * 50,Color(255,0,0))
+	render.DrawLine(cart:GetPos(), cart:GetPos() + cart:GetVelocity(), color_white)
+	render.DrawLine(cart:GetPos(), cart:GetPos() + cart:GetForward() * 50, Color(255, 0, 0))
 end
 
--- function GM:Move() return true end
+net.Receive("test", function()
+	cf = net.ReadNormal()
+end)
 
+-- function GM:Move() return true end
 do
 	local Hide = {
 		CHudAmmo = true,

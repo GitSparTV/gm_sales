@@ -47,33 +47,28 @@ function GM:Move(ply)
 end
 
 function GM:CalcView( ply, origin, angles, fov, znear, zfar )
-	-- if ply.Cart and ply.Cart:IsValid() then
-	-- 	local view = {}
-	-- 	view.origin = ply.Cart:LocalToWorld(Vector(-60, 0, 40))
-	-- 	view.angles = angles
-	-- 	view.fov = fov
-	-- 	view.drawviewer = false
+	if ply.Cart and ply.Cart:IsValid() then
+		local view = {}
+		view.origin = ply.Cart:LocalToWorld(Vector(-60, 0, 40))
+		view.angles = angles
+		view.fov = fov
+		view.drawviewer = false
 
-	-- 	return view
-	-- end
+		return view
+	end
 end
 
 function GM:SetupMove(ply, mv, cmd)
 	if ply.Cart and ply.Cart:IsValid() then
 		if SERVER then
 			ply.Cart:PhysWake()
-			mv:SetOrigin(ply.Cart:LocalToWorld(Vector(-60, 0, -15)))
-		elseif not IsFirstTimePredicted() then
+			mv:SetOrigin(LerpVector(0.9,mv:GetOrigin(),ply.Cart:LocalToWorld(Vector(-60, 0, -15))))
+		elseif not IsFirstTimePredicted() and not ply:KeyDown(IN_ATTACK2) then
 			ply:SetEyeAngles(LerpAngle(0.1, ply:EyeAngles(), ply.Cart:GetNetworkAngles()))
 		end
 
-		if CLIENT then
-			-- mv:SetOrigin(LocalToWorld(Vector(-60, 0, -15), angle_zero, ply.Cart:GetNetworkOrigin(), ply.Cart:GetNetworkAngles()))
-		end
-
-		-- mv:SetVelocity(ply.Cart:GetAbsVelocity())
-		-- mv:SetMoveAngles(ply:EyeAngles())
-		-- mv:SetAngles()
+		mv:SetVelocity(ply.Cart:GetAbsVelocity())
+		mv:SetMoveAngles(ply:EyeAngles())
 		cmd:SetButtons(0)
 		cmd:ClearMovement()
 		cmd:ClearButtons()
