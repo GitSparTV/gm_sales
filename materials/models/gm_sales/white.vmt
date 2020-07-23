@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/gm_sales/white"
+ 	"$model" 		1
+ 	"$vertexcolor" 	1
+}
